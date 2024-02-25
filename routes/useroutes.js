@@ -27,3 +27,18 @@ app.get('api/users/:id', async(req, res) => {
         res.status(500).send('Server Error'); 
     }
 }); 
+
+// Create a new user
+
+app.post('api/users', async(req, res) => {
+try{
+    const newUser = await User.create(req.body);
+    res.json(newUser);
+
+}catch(err){
+    console.log(err.message);
+    res.status(500).send("Server Error");
+}
+});
+
+//update a users data
