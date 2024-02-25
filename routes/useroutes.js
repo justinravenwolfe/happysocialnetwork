@@ -55,3 +55,15 @@ app.put('api/users/:id', async(req, res) => {
 
     }
 });
+
+//deletion route
+app.delete('api/users/:id', async(req, res) => {
+    try{
+        await User.findByIdAndDelete(req.params.id);
+        res.json({msg: "User Deleted"}); 
+
+    }catch(err){
+        console.log(err.message);
+        res.status(500).send("Server Error");
+    }
+}); 
