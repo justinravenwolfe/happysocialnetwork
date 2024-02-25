@@ -42,3 +42,16 @@ try{
 });
 
 //update a users data
+app.put('api/users/:id', async(req, res) => {
+    try{
+        //Try to find and update with given information 
+        const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {new: true});
+        res.json(updatedUser);
+    }
+    catch(err){
+        //Have to create a new entry everything we update for management purposes 
+        await User.findByIdAndDelete(req.params.id);
+        res.status(500).send("Server Error");
+
+    }
+});
