@@ -1,5 +1,10 @@
 
 //Data to the model
+const express = require('express'); 
+const mongoose = require('mongoose'); 
+//Cross origin resource sharing 
+const cors = require('cors');
+
 const userSchema = new mongoose.Schema({
     username: {
         type: String,

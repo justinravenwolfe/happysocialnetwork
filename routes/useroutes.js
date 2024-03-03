@@ -1,7 +1,9 @@
-import thought from "../models/thought.js"; 
-import user from "../models/user.js";
-
+thought = require('../model/thought.js'); 
+user = require('../model/user.js'); 
+const express = require('express'); 
 const router = express.Router();
+
+const app = express(); 
 
 app.get('api/users', async(req, res) => {
 //If things go well

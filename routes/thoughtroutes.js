@@ -1,5 +1,7 @@
-import thought from "../models/thought.js"; 
-import user from "../models/user.js";
+thought = require('../model/thought.js'); 
+user = require('../model/user.js'); 
+const express = require('express'); 
+const app = express(); 
 
 const router = express.Router();
 
