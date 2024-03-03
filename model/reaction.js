@@ -22,7 +22,3 @@ const reactionSchema = new mongoose.Schema({
 }); 
 
 const reaction = mongoose.model('reaction', reactionSchema); 
-/*
-Users -> [user, users] -> friends list -> list of thoughts [thoughts, thoughts, thoughts]
-->thoughts -> reactions
-*/
