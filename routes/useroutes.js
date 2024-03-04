@@ -3,9 +3,9 @@ user = require('../model/user.js');
 const express = require('express'); 
 const router = express.Router();
 
-const app = express(); 
 
-app.get('api/users', async(req, res) => {
+
+router.get('api/users', async(req, res) => {
 //If things go well
 try{
     //Looking for all users and populating metadata
@@ -21,7 +21,7 @@ res.status(500).send('Server Error');
 }); 
 //get, post, update, delete 
 
-app.get('api/users/:id', async(req, res) => {
+router.get('api/users/:id', async(req, res) => {
     try {
         const user  = await user.findById(req.param.id).populate('thoughts').populate('friends');
         if(!user){
@@ -37,7 +37,7 @@ app.get('api/users/:id', async(req, res) => {
 
 // Create a new user
 
-app.post('api/users', async(req, res) => {
+router.post('api/users', async(req, res) => {
 try{
     const newUser = await user.create(req.body);
     res.json(newUser);
@@ -49,7 +49,7 @@ try{
 });
 
 //update a users data
-app.put('api/users/:id', async(req, res) => {
+router.put('api/users/:id', async(req, res) => {
     try{
         //Try to find and update with given information 
         const updatedUser = await user.findByIdAndUpdate(req.params.id, req.body, {new: true});
@@ -64,7 +64,7 @@ app.put('api/users/:id', async(req, res) => {
 });
 
 //deletion route
-app.delete('api/users/:id', async(req, res) => {
+router.delete('api/users/:id', async(req, res) => {
     try{
         await user.findByIdAndDelete(req.params.id);
         res.json({msg: "User Deleted"}); 

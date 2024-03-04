@@ -2,8 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose'); 
 //Cross origin resource sharing 
 const cors = require('cors');
-const userRoutes = require('../routes/thoughtroutes.js'); // Import the user routes file
-const thoughtRoutes = require('../routes/useroutes.js'); // Import the thought routes file
+const userRoutes = require('../routes/useroutes.js'); // Import the user routes file
+const thoughtRoutes = require('../routes/thoughtroutes.js'); // Import the thought routes file
 
 
 //Starts the express app 

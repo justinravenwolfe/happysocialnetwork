@@ -1,0 +1,22 @@
+const express = require('express');
+const db = require('./config/connection');
+const thoughtroutes = require('./routes/thoughtroutes.js');
+const userroutes = require('./routes/userroutes.js');
+
+
+
+const PORT = 3001;
+const app = express();
+
+
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(thoughtroutes);
+app.use(userroutes);
+
+db.once('open', () => {
+  app.listen(PORT, () => {
+    console.log(`API server for ${activity} running on port ${PORT}!`);
+  });
+});
