@@ -5,6 +5,7 @@ const app = express();
 
 const router = express.Router();
 
+//Link for posts 
 app.get('api/thoughts', async(req, res) => {
 //If things go well
 try{
@@ -20,7 +21,7 @@ res.status(500).send('Server Error');
 }
 }); 
 //get, post, update, delete 
-
+//Link for when you are looking at a specific users posts
 app.get('api/thoughts/:id', async(req, res) => {
     try {
         const thoughts  = await thought.findById(req.param.id).populate('user').populate('reactions');
@@ -36,7 +37,7 @@ app.get('api/thoughts/:id', async(req, res) => {
 }); 
 
 // Create a new user
-
+//app.post<- Express function <- adding a new entry to database <- Create a new post 
 app.post('api/thoughts', async(req, res) => {
 try{
     const newThought = await thought.create(req.body);
@@ -49,6 +50,7 @@ try{
 });
 
 //update a users data
+//app.put <- updating data <- If you want to change a post after the fact
 app.put('api/thoughts/:id', async(req, res) => {
     try{
         //Try to find and update with given information 
@@ -63,7 +65,8 @@ app.put('api/thoughts/:id', async(req, res) => {
     }
 });
 
-//deletion route
+//deletion route <- Deleting my post
+//app.delete <- deleting from database
 app.delete('api/thoughts/:id', async(req, res) => {
     try{
         await thought.findByIdAndDelete(req.params.id);

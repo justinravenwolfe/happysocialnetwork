@@ -1,5 +1,6 @@
 import thought from "../models/thought.js"; 
 
+//Get all of my thoughts <- A bunch of general posts loading 
 exports.getAllThoughts = async (req, res) => {
     try{
         const thoughts = await thought.find();
@@ -11,7 +12,7 @@ exports.getAllThoughts = async (req, res) => {
 
     }
 }; 
-
+//To see all the thoughts from a specific user
 //Get a user by id 
 exports.getThoughtById = async (req, res) => {
     const{thoughtId} = req.params; //Getting the id the user gave in the parameters

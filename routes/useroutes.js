@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 
-
+//Getting all user profiles
 router.get('api/users', async(req, res) => {
 //If things go well
 try{
@@ -20,7 +20,7 @@ res.status(500).send('Server Error');
 }
 }); 
 //get, post, update, delete 
-
+//Getting a single user profile by id
 router.get('api/users/:id', async(req, res) => {
     try {
         const user  = await user.findById(req.param.id).populate('thoughts').populate('friends');
@@ -64,6 +64,7 @@ router.put('api/users/:id', async(req, res) => {
 });
 
 //deletion route
+//Delete my user profile
 router.delete('api/users/:id', async(req, res) => {
     try{
         await user.findByIdAndDelete(req.params.id);
@@ -74,4 +75,5 @@ router.delete('api/users/:id', async(req, res) => {
         res.status(500).send("Server Error");
     }
 }); 
+
 module.exports = router;

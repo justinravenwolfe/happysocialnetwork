@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 //Code for the reaction model 
 
-const reactionSchema = new mongoose.Schema({
+const reactionSchema = new mongoose.Schema({ // Comment
     reactionId: {
         type: mongoose.Schema.Types.ObjectId, 
         default: () => new mongoose.Types.ObjectId()
@@ -29,7 +29,7 @@ const reactionSchema = new mongoose.Schema({
 
 const reaction = mongoose.model('reaction', reactionSchema); 
 
-const thoughtSchema = new mongoose.Schema({
+const thoughtSchema = new mongoose.Schema({ // Post 
  thoughtText:{
     type: String, 
     required: true, 
@@ -50,6 +50,7 @@ const thoughtSchema = new mongoose.Schema({
 
 //Virtual method <- to find the number of reactions a user gets 
 thoughtSchema.virtual('reactionCount').get(function() {
+    //How many people reacted to a thought <- comments
     return this.reactions.length; 
 });
 
