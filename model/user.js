@@ -1,11 +1,8 @@
 
 //Data to the model
-const express = require('express'); 
-const mongoose = require('mongoose'); 
-//Cross origin resource sharing 
-const cors = require('cors');
+const { Schema, model } = require('mongoose'); 
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
     username: {
         type: String,
         unique: true,
@@ -24,14 +21,14 @@ const userSchema = new mongoose.Schema({
     //Array of thoughts
     thoughts: [
         {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'Thought',  //references to the throughout model
         }
     ],
     //array of friends
     friends: [
         {
-            type: mongoose.Schema.Types.ObjectId,
+            type: Schema.Types.ObjectId,
             ref: 'User',  //references to the throughout model 
         }
     ]
@@ -45,4 +42,6 @@ userSchema.virtual('friendCount').get(function() {
 });
 
 //Exporting the template/all its related variables
-const User = mongoose.model('User', userSchema); 
+const User = model('User', userSchema); 
+
+module.exports = User;

@@ -1,14 +1,10 @@
 //Data model to create a thought <- post 
-const express = require('express'); 
-const mongoose = require('mongoose'); 
-//Cross origin resource sharing 
-const cors = require('cors');
-//Code for the reaction model 
+const { Schema, model} = require('mongoose'); 
 
-const reactionSchema = new mongoose.Schema({ // Comment
+const reactionSchema = new Schema({ // Comment
     reactionId: {
-        type: mongoose.Schema.Types.ObjectId, 
-        default: () => new mongoose.Types.ObjectId()
+        type: Schema.Types.ObjectId, 
+        default: () => new Schema.Types.ObjectId()
     },
     reactionBody: {
         type: String, 
@@ -27,9 +23,9 @@ const reactionSchema = new mongoose.Schema({ // Comment
     }
 }); 
 
-const reaction = mongoose.model('reaction', reactionSchema); 
+const reaction = model('reaction', reactionSchema); 
 
-const thoughtSchema = new mongoose.Schema({ // Post 
+const thoughtSchema = new Schema({ // Post 
  thoughtText:{
     type: String, 
     required: true, 
@@ -54,6 +50,6 @@ thoughtSchema.virtual('reactionCount').get(function() {
     return this.reactions.length; 
 });
 
-const Thought = mongoose.model('Thought', thoughtSchema); 
+const Thought = model('Thought', thoughtSchema); 
 
-
+module.exports = Thought;
