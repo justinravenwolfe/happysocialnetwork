@@ -1,5 +1,7 @@
 const Thought = require('../../model/thought.js');
+console.log(Thought);
 const router = require("express").Router();
+
 
 //Link for posts 
 router.get('/', async (req, res) => {
@@ -20,7 +22,7 @@ router.get('/', async (req, res) => {
 //Link for when you are looking at a specific users posts
 router.get('/:id', async (req, res) => {
     try {
-        const thoughts = await Thought.findById(req.param.id).populate('user').populate('reactions');
+        const thoughts = await Thought.findById(req.params.id).populate('user').populate('reactions');
         if (!thoughts) {
             return res.status(404).json({ msg: "Thought Not Found" });
         }
@@ -51,7 +53,7 @@ router.put('/:id', async (req, res) => {
     try {
         //Try to find and update with given information 
         const updatedThought = await Thought.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        res.json(updatedThought);
+        res.status(200).json(updatedThought);
     }
     catch (err) {
         //Have to create a new entry everything we update for management purposes 
@@ -66,7 +68,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     try {
         await Thought.findByIdAndDelete(req.params.id);
-        res.json({ msg: "Thought Deleted" });
+        res.status(204).send("Thought Deleted");
 
     } catch (err) {
         console.log(err.message);

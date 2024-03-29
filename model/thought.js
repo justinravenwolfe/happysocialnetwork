@@ -1,5 +1,6 @@
 //Data model to create a thought <- post 
 const { Schema, model} = require('mongoose'); 
+const mongoose = require('mongoose');
 
 const reactionSchema = new Schema({ // Comment
     reactionId: {
@@ -23,7 +24,7 @@ const reactionSchema = new Schema({ // Comment
     }
 }); 
 
-const reaction = model('reaction', reactionSchema); 
+const Reaction = mongoose.model('Reaction', reactionSchema); 
 
 const thoughtSchema = new Schema({ // Post 
  thoughtText:{
@@ -50,6 +51,6 @@ thoughtSchema.virtual('reactionCount').get(function() {
     return this.reactions.length; 
 });
 
-const Thought = model('Thought', thoughtSchema); 
+const Thought = mongoose.model('Thought', thoughtSchema);
 
-module.exports = Thought;
+module.exports = {Thought, Reaction};

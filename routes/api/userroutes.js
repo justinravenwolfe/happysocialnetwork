@@ -51,7 +51,7 @@ router.put('/:id', async (req, res) => {
     try {
         //Try to find and update with given information 
         const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        res.json(updatedUser);
+        res.status(200).json(updatedUser); 
     }
     catch (err) {
         //Have to create a new entry everything we update for management purposes 
@@ -66,7 +66,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     try {
         await User.findByIdAndDelete(req.params.id);
-        res.json({ msg: "User Deleted" });
+        res.status(204).send("User Deleted");
 
     } catch (err) {
         console.log(err.message);
