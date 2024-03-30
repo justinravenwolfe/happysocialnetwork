@@ -3,6 +3,7 @@ console.log(Thought);
 const router = require("express").Router();
 
 
+
 //Link for posts 
 router.get('/', async (req, res) => {
     //If things go well
@@ -66,6 +67,7 @@ router.put('/:id', async (req, res) => {
 //deletion route <- Deleting my post
 //app.delete <- deleting from database
 router.delete('/:id', async (req, res) => {
+    console.log(req)
     try {
         await Thought.findByIdAndDelete(req.params.id);
         res.status(204).send("Thought Deleted");
