@@ -40,7 +40,7 @@ const thoughtSchema = new Schema({ // Post
  },
  username: {
     type: String, 
-    required: true
+    required: false
  },
  reactions: [reactionSchema]
 }); 

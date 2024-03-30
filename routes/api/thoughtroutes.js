@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
     //If things go well
     try {
         //Looking for all users and populating metadata
-        const thoughts = await Thought.find().populate('user').populate('reactions');
+        const thoughts = await Thought.find();
         //Turning it into a string so its easy to work with/visualize
         res.json(thoughts);
         //If there is an error
@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 //Link for when you are looking at a specific users posts
 router.get('/:id', async (req, res) => {
     try {
-        const thoughts = await Thought.findById(req.params.id).populate('user').populate('reactions');
+        const thoughts = await Thought.findById(req.params.id);
         if (!thoughts) {
             return res.status(404).json({ msg: "Thought Not Found" });
         }
