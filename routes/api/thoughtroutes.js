@@ -1,4 +1,4 @@
-const Thought = require('../../model/thought.js');
+const {Thought} = require('../../model/thought.js');
 console.log(Thought);
 const router = require("express").Router();
 
