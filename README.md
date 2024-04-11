@@ -1,7 +1,7 @@
 Social Media Website Back-end:
-Author(s):Justin Ramirez, Alliyah Steele of Varsity Tutors
+Author(s):Justin Ramirez, Alliyah Steele of Varsity Tutors 
 Github File Link:https://github.com/justinravenwolfe/happysocialnetwork
-Walkthrough Link: 
+Walkthrough Link: https://drive.google.com/file/d/137BPfapXPP12P5GItsnJ7pqWtG87RSJ0/view?usp=sharing
 
 
 1) Purpose & Goal: To create a server and data base. The goal is to practice using mongoose to create backend for a social media site.
